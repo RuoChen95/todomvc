@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>to do app</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h1>to-do app</h1>
+	<input id="usein" placeholder="type what you want to do">
+	<button><span>submit</span></button> <!-- do i need span? -->
+	<ul id="useout"></ul>
+
+
+	<script type="text/javascript">
+		var submitButton = document.querySelector("#usein+button") //is that right? right
+		submitButton.addEventListener('click',submitEvent/* no ()*/); 
+		
+		//there are some problem in it, it seems that the function was used immediately
+		//can't get the input value
+		function submitEvent() {
+			var usein = document.getElementById('usein');
+			var useout = document.getElementById('useout');
+
+			//creat element
+			var liElement = document.createElement('li');
+
+			//get the user input and add the input to the liElement
+			useinWord = usein.value;
+			liElement.appendChild(document.createTextNode(useinWord)); //the textnode is child node
+
+			//put element in a right place ok
+			useout.appendChild(liElement); //li is the child of ul, it is hard to use insert before 
+		}
+	</script>
+</body>
+</html>

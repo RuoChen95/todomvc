@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>to do app practice</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h1>to do app</h1>
+	<input type="" name="">
+	<button>submit</button>
+	<ul></ul>
+	<script type="text/javascript">
+		document.getElementsByTagName('button')[0].addEventListener('click',foo);
+		function foo() {
+			//get the value
+			var inputValue = document.getElementsByTagName('input')[0].value;
+
+			//create new elemts; set the class
+			var newli = document.createElement('li');
+			var newbutton = document.createElement('button');
+			newbutton.className = 'delete';
+
+			//set the new element value
+			newli.innerHTML = inputValue;
+			newbutton.innerHTML = 'delete';
+
+			//put the li to the ul; the button to the li
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.appendChild(newli);
+			newli.appendChild(newbutton);
+
+			//set the delete function
+			var deletebutton = document.getElementsByClassName('delete');
+			var loopLength = deletebutton.length;
+			for(i=0;i<loopLength;i++)
+			deletebutton[i].addEventListener('click',deletefoo);
+		}
+
+
+		function deletefoo() {
+			//get it's mother
+			var elem = this.parentNode;
+
+			//delete it
+			elem.parentNode.removeChild(elem);
+		}
+	</script>
+</body>
+</html>

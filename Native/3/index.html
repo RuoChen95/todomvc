@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript practice: to do app</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h1>to do app</h1>
+	<input type="" name="" placeholder="what do you want to do">
+	<button>submit</button>
+	<ul></ul>
+	<button id='finished'>finished</button>
+
+	<script type="text/javascript">
+		//set the input function
+		function foo() {
+			//get the input value
+			var input = document.getElementsByTagName('input')[0];
+			var inputVal = input.value;
+
+			//create new li
+			var li = document.createElement('li');
+			li.innerHTML = inputVal;
+			li.style.display = 'block';
+			//create new delete button
+			var button = document.createElement('button');
+			button.innerHTML = 'delete';
+			button.className = 'delete';
+			//create new finished button
+			var finishedButton = document.createElement('button');
+			finishedButton.innerHTML = 'finished';
+			finishedButton.className = 'finished';
+
+			//put the new li to ul
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.appendChild(li);
+			//put the new button to new li
+			li.appendChild(button);
+			li.appendChild(finishedButton);
+
+			//bound the button event
+			var button = document.getElementsByClassName('delete');
+			var finishedButton = document.getElementsByClassName('finished');
+			for(i=0; i<button.length; i++){
+				button[i].addEventListener('click', deleteFoo);
+				finishedButton[i].addEventListener('click', finishedFoo);}
+		}
+
+		//bound the event
+		var button = document.getElementsByTagName('button')[0];
+		button.addEventListener('click', foo);
+
+		//set the deleteFoo function
+		function deleteFoo() {
+			//get the mother
+			var elem = this.parentNode
+
+			//delete it
+			elem.parentNode.removeChild(elem);
+		}
+		//set the finishedFoo function
+		function finishedFoo(){
+			//get the mother
+			var elem = this.parentNode
+
+			//change the display
+			elem.style.display = 'none';
+		}
+
+		//set the unfinish button: only show the li which style isn't none 
+		function unfinishFoo() {
+			// body...
+		}
+
+		//set the finished button: only show the li which style is none
+		function finishedButtonFoo() {
+			var liShow = document.querySelectorAll('[style="display: none;"]');
+			var liHide = document.querySelectorAll('[style="display: block;"]'); //is that right?
+
+			for(var i=0; i<liShow.length; i++)
+				liShow[i].style.display = 'block';
+			
+			for(var i=0; i<liHide.length; i++)
+				liHide[i].style.display = 'none';
+
+			var finishedButton = document.getElementById('finished');
+
+			//change the words
+			if(finishedButton.innerHTML == "finished")
+				finishedButton.innerHTML = "unfinish";
+			else
+				finishedButton.innerHTML = "finished";
+
+		}
+		//bound the event
+		var finishedButton = document.getElementById('finished');
+		finishedButton.addEventListener('click', finishedButtonFoo);
+	</script>
+</body>
+</html>
